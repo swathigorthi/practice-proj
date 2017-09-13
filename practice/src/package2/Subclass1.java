@@ -3,7 +3,8 @@ package package2;
 import package1.Class1;
 
 public class Subclass1 extends Class1 {
-    void printSomething(){
+	
+     void printSomething(){
     	System.out.println("From Subclass1");
     }
     public static void printAnything(){

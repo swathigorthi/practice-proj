@@ -1,4 +1,4 @@
-package graph;
+package graphEdgeRepresentation;
 
 import java.util.ArrayList;
 import java.util.List;

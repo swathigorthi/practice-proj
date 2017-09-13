@@ -20,12 +20,14 @@ public class StringPermutationsMain {
 				}
 			}
 		}
+		StringPermutationsMain s = "0";
+		List i = new ArrayList<>;
+		i.inde
 		return permutedStrings;
 	}
 
 	public static void main(String[] args) {
-		String str = "str";
-		System.out.println(permute(str));
+		
 	}
 
 }

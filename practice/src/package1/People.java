@@ -20,6 +20,9 @@ public class People {
 	}
 	
 	public String getAttribute(String attr){
+		List<String> l = new ArrayList<>();
+		Collections.re
 		return attrMap.get(attr);
+		
 	}
 }

@@ -21,15 +21,9 @@ public class Tree {
     
     public void inOrder(Node root){
         if(root!=null){
-    	   Node left = root.left;
-    	   Node right = root.right;
-           if(left!=null){
-        	   inOrder(left);
-           }
+        	   inOrder(root.left);
            System.out.println(root.value);
-    	   if(right!=null){
-    		   inOrder(right);
-    	   }
+    		   inOrder(root.right);
     	}
     }
     
@@ -100,5 +94,107 @@ public class Tree {
        }
        
        return true;
+   }
+   
+   public static class MinMaxValue{
+	   private int value;
+	   public MinMaxValue(int value){
+		   this.value = value;
+	   }
+	   public void setValue(int value){
+		   this.value = value;
+	   }
+	   public int getValue(){
+		   return value;
+	   }
+   }
+   
+   public boolean isBalanced(){
+	   MinMaxValue min = new MinMaxValue(Integer.MAX_VALUE);
+	   MinMaxValue max = new MinMaxValue(Integer.MIN_VALUE);
+	   findDepth(root, 0,min , max);
+	   return (max.getValue()-min.getValue()) <=1;
+   }
+   
+  
+   
+   public void findDepth(Node node, Integer depth, MinMaxValue min, MinMaxValue max){
+	   System.out.println(node.value+","+depth+","+min.getValue() + "," + max.getValue());
+	   if(node.left ==null && node.right == null){
+		   System.out.println("Altered min max");
+		   min.setValue(Math.min(min.getValue(), depth));
+		   max.setValue(Math.max(max.getValue(), depth));
+		   System.out.println(node.value+","+depth+","+min.getValue() + "," + max.getValue());
+	   }
+	   else{
+		   if(node.left!=null){
+			   findDepth(node.left, depth+1, min, max);
+		   }
+		   if(node.right!=null){
+			   findDepth(node.right, depth+1, min, max);
+		   }
+	   }
+   }
+   
+   public static class Result{
+	   private boolean n1Found;
+	   private  boolean n2Found;
+	   private Node ca;
+	public Result(boolean n1Found, boolean n2Found, Node ca) {
+		super();
+		this.n1Found = n1Found;
+		this.n2Found = n2Found;
+		this.ca = ca;
+	}
+	public boolean isN1Found() {
+		return n1Found;
+	}
+	public void setN1Found(boolean n1Found) {
+		this.n1Found = n1Found;
+	}
+	public boolean isN2Found() {
+		return n2Found;
+	}
+	public void setN2Found(boolean n2Found) {
+		this.n2Found = n2Found;
+	}
+	public Node getCa() {
+		return ca;
+	}
+	public void setCa(Node ca) {
+		this.ca = ca;
+	}
+   }
+   
+   public Node findCommonAncestor(Node n1, Node n2){
+	   Result res = find(root, n1,n2);
+	   return res.ca;
+   }
+   
+   public Result find(Node n, Node n1, Node n2){
+	   if(n.equals(n1)){
+		   Result lr = n.left!=null ? find(n.left, n1, n2) : new Result(false, false, null);
+		   Result rr = n.right!=null ? find (n.right, n1, n2) : new Result(false, false, null);
+		   return new Result(n.equals(n1),lr.n2Found||rr.n2Found ,null);
+	   }
+	   if(n.equals(n2)){
+		   Result lr = n.left!=null ? find(n.left, n1, n2) : new Result(false, false, null);
+		   Result rr = n.right!=null ? find (n.right, n1, n2) : new Result(false, false, null);
+		   return new Result(lr.n1Found || rr.n1Found,n.equals(n2) ,null);
+	   }
+	   Result lr = n.left!=null ? find(n.left, n1, n2) : new Result(false, false, null);
+	   Result rr = n.right!=null ? find (n.right, n1, n2) : new Result(false, false, null);
+	   
+	   Result r = new Result(lr.n1Found || rr.n1Found, lr.n2Found||rr.n2Found , null);
+	   if(lr.getCa() !=null){
+		   r.setCa(lr.getCa());
+	   }
+	   else if(rr.getCa() !=null){
+		   r.setCa(rr.getCa());
+	   }
+	   if(r.n1Found && r.n2Found && r.getCa() == null){
+		   r.setCa(n);;
+	   }
+	   return r;
    }
 }

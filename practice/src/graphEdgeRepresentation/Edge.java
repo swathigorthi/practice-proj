@@ -1,4 +1,4 @@
-package graph;
+package graphEdgeRepresentation;
 
 public class Edge {
 	Vertex vertex1;

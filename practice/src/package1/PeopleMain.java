@@ -9,26 +9,29 @@ import java.util.Map;
 public class PeopleMain {
 
 	public static void main(String[] args) {
-		People p1 = new People("p1");
-		p1.setAttribute("sex", "M").setAttribute("occupation", "cop");
-		People p2 = new People("p2");
-		p2.setAttribute("sex", "F").setAttribute("occupation", "cop");
-		People p3 = new People("p3");
-		p3.setAttribute("sex", "M").setAttribute("occupation", "doc");
-		People p4 = new People("p4");
-		p4.setAttribute("sex", "F").setAttribute("occupation", "doc");
-		People p5 = new People("p5");
-		p5.setAttribute("sex", "M").setAttribute("occupation", "cop");
-		
-		List<People> list = new ArrayList<>();
-		list.add(p1);
-		list.add(p2);
-		list.add(p3);
-		list.add(p4);
-		list.add(p5);
-		List<String> groupByList = Arrays.asList("sex","occupation");
-		 groupBy(list, groupByList);
-		
+		String s = String.valueOf(0);
+		System.out.println(s.charAt(0) == '0');
+		char
+//		People p1 = new People("p1");
+//		p1.setAttribute("sex", "M").setAttribute("occupation", "cop");
+//		People p2 = new People("p2");
+//		p2.setAttribute("sex", "F").setAttribute("occupation", "cop");
+//		People p3 = new People("p3");
+//		p3.setAttribute("sex", "M").setAttribute("occupation", "doc");
+//		People p4 = new People("p4");
+//		p4.setAttribute("sex", "F").setAttribute("occupation", "doc");
+//		People p5 = new People("p5");
+//		p5.setAttribute("sex", "M").setAttribute("occupation", "cop");
+//		
+//		List<People> list = new ArrayList<>();
+//		list.add(p1);
+//		list.add(p2);
+//		list.add(p3);
+//		list.add(p4);
+//		list.add(p5);
+//		List<String> groupByList = Arrays.asList("sex","occupation");
+//		 groupBy(list, groupByList);
+//		
 		
 	}
 	
